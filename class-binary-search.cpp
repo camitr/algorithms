@@ -5,19 +5,19 @@ using namespace std;
 class Binary{
 
 private:
-	int l,item,sizeofarray,mid;
+	int low,item,sizeofarray,mid;
 	int* arrayPointer;
 public:
-		Binary(int l,int num);
+		Binary(int low,int num);
 void	arrayInput();
 void	showMessg();
-int		binarySort(int l,int sizeofarray,int item);
+int		binarySort(int low,int sizeofarray,int item);
 
 };
 
-Binary::Binary(int l,int num)
+Binary::Binary(int low,int num)
 {
-	l=l;
+	low=low;
 	sizeofarray = num;
 	arrayPointer = new int[num];
 }
@@ -37,10 +37,10 @@ void Binary::showMessg()
 	cout<<"please enter the sorted element in the array"<<endl;
 }
 
-int Binary::binarySort(int l,int sizeofarray,int item)
+int Binary::binarySort(int low,int sizeofarray,int item)
 {
 	
-	mid = (l + sizeofarray)/2;
+	mid = (low + sizeofarray)/2;
 	if(item == arrayPointer[mid])
 		{
 			cout<<"item found at "<<mid+1<<" position";
@@ -49,11 +49,11 @@ int Binary::binarySort(int l,int sizeofarray,int item)
 	else if(item < arrayPointer[mid])
 		{
 			sizeofarray = mid-1;
-			return binarySort(l,sizeofarray,item);
+			return binarySort(low,sizeofarray,item);
 		}
 	else
 		{
-			l = mid+1;
+			low = mid+1;
 			return binarySort(mid+1,sizeofarray,item);
 		}
 }

@@ -3,24 +3,24 @@
 
 using namespace std;
 
-class Bubble{
+class Insertion{
 private:
 	int sizeofarray;
 	int* arrayList;
 public:
-		Bubble(int num);
+		Insertion(int num);
 void	arrayRandom();
 void	arrayInput();
-void	bubbleSort();
+void	insertionSort();
 void	arrayShow();
 };
 
-Bubble::Bubble(int num)
+Insertion::Insertion(int num)
 {
 	sizeofarray = num;
 }
 
-void Bubble::arrayRandom()
+void Insertion::arrayRandom()
 {
 	arrayList = new int[sizeofarray];                                                                        
     srand((unsigned)time(NULL));                                                                              
@@ -31,35 +31,32 @@ void Bubble::arrayRandom()
         }                                                                                                     
 }       
 
-void Bubble::bubbleSort()
+void Insertion::insertionSort()
 {
-	int count =0;
+	int swap =0;
 	if (sizeofarray ==1)
 	{
 		cout<<"array has only one element"<<endl;
 		exit;
 	}
 	cout<<"size of array "<<sizeofarray<<endl;
-	for(int i=0; i<sizeofarray-1; i++)
+	for(int i=1; i<sizeofarray; i++)
 	{
-		for(int j=0; j<sizeofarray-i-1; j++)
+		int j=i;
+		while(j>0&&arrayList[j-1] > arrayList[j])
 		{
-			if(arrayList[j] > arrayList[j+1])
-			{
-				count			= count + 1;
-				int temp		= arrayList[j];
-				arrayList[j]	= arrayList[j+1];
-				arrayList[j+1]	= temp;
-			}
-		}
-		if(count == 0)
-		{
-			cout<<"allready sorted array"<<endl;
-			break;
+			swap = swap + 1;
+			int temp = arrayList[j-1];
+				arrayList[j-1] = arrayList[j];
+				arrayList[j] = temp;
+			j = j-1;
 		}
 	}
+
+	
+cout<<"Number of swaps= "<<swap<<endl;
 }
-void Bubble::arrayShow()
+void Insertion::arrayShow()
 {
 	cout<<"sorted array"<<endl;
 	for(int i =0; i<sizeofarray; i++)
@@ -68,7 +65,7 @@ void Bubble::arrayShow()
 	}
 }
 
-void Bubble::arrayInput()
+void Insertion::arrayInput()
 {
 	arrayList = new int[sizeofarray];
 	for(int i=0;i<sizeofarray;i++)
@@ -85,7 +82,7 @@ int main()
 	char opton;
 	cout<<"enter the size of array"<<endl;
 	cin>>size;
-	Bubble obj(size);
+	Insertion obj(size);
 	cout<<"For random array press R"<<endl;
 	cin>>opton;
 	if(opton == 'R')
@@ -97,7 +94,7 @@ int main()
 		obj.arrayInput();
 	}
 
-	obj.bubbleSort();
+	obj.insertionSort();
 	obj.arrayShow();
 }
 

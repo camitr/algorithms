@@ -33,6 +33,7 @@ void Bubble::arrayRandom()
 
 void Bubble::bubbleSort()
 {
+	int count =0;
 	if (sizeofarray ==1)
 	{
 		cout<<"array has only one element"<<endl;
@@ -45,15 +46,17 @@ void Bubble::bubbleSort()
 		{
 			if(arrayList[j] > arrayList[j+1])
 			{
+				count			= count + 1;
 				int temp		= arrayList[j];
 				arrayList[j]	= arrayList[j+1];
 				arrayList[j+1]	= temp;
 			}
 		}
-	}
-	for(int i=0;i<sizeofarray;i++)
-	{
-		cout<<arrayList[i]<<endl;
+		if(count == 0)
+		{
+			cout<<"allready sorted array"<<endl;
+			break;
+		}
 	}
 }
 void Bubble::arrayShow()
@@ -65,14 +68,36 @@ void Bubble::arrayShow()
 	}
 }
 
+void Bubble::arrayInput()
+{
+	arrayList = new int[sizeofarray];
+	for(int i=0;i<sizeofarray;i++)
+	{
+		cout<<"enter the "<<i<<"th element of the array"<<endl;
+		cin>>arrayList[i];
+	}
+}
+
+
 int main()
 {
 	int size;
+	char opton;
 	cout<<"enter the size of array"<<endl;
 	cin>>size;
 	Bubble obj(size);
-	obj.arrayRandom();
+	cout<<"For random array press R"<<endl;
+	cin>>opton;
+	if(opton == 'R')
+	{
+		obj.arrayRandom();
+	}
+	else
+	{
+		obj.arrayInput();
+	}
+
 	obj.bubbleSort();
-//	obj.arrayShow();
+	obj.arrayShow();
 }
 

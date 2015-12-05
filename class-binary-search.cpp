@@ -1,5 +1,6 @@
 #include<iostream>
-
+#include<ctime>
+#include<sys/time.h>
 using namespace std;
 
 class Binary{
@@ -68,6 +69,12 @@ int main()
 	obj.arrayInput();
 	cout<<"enter the element to search in the List"<<endl;
 	cin>>num;
+	clock_t begin = clock();
 	obj.binarySort(0,size,num);
+	clock_t end = clock();
+	double total_time = double(end - begin);/// CLOCKS_PER_SEC;
+	cout<<"time take by Binary search = "<<total_time<<endl;
 
+	//timespec ts;
+	//clock_gettime(CLOCK_REALTIME, &ts);
 }

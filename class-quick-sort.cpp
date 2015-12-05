@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cstdlib>
+#include<ctime>
 using namespace std;
 
 class Quick{
@@ -96,6 +97,11 @@ int main()
 	cin>>size;
 	Quick obj(size);
 	obj.quickArray();
+	clock_t begin = clock();
 	obj.quickSort(0,size-1);
+	clock_t end	  = clock();
+	double	time_taken	= double(end - begin)/CLOCKS_PER_SEC;
 	obj.quickShow();
+	cout<<"time take by quick sort="<<time_taken<<endl;
+
 }

@@ -13,6 +13,7 @@ void	arrayRandom();
 void	arrayInput();
 void	insertionSort();
 void	arrayShow();
+int		insertionComp(int num1, int num2);
 };
 
 Insertion::Insertion(int num)
@@ -33,7 +34,7 @@ void Insertion::arrayRandom()
 
 void Insertion::insertionSort()
 {
-	int swap =0;
+	int swap =0,comp=0,compresult;
 	if (sizeofarray ==1)
 	{
 		cout<<"array has only one element"<<endl;
@@ -42,27 +43,43 @@ void Insertion::insertionSort()
 	cout<<"size of array "<<sizeofarray<<endl;
 	for(int i=1; i<sizeofarray; i++)
 	{
-		int j=i;
-		while(j>0&&arrayList[j-1] > arrayList[j])
+		for(int j=i;j>0;j--)
 		{
+			compresult=insertionComp(arrayList[j-1],arrayList[j]);
+			++comp;
+			if(compresult==-1)
+			{
 			swap = swap + 1;
 			int temp = arrayList[j-1];
 				arrayList[j-1] = arrayList[j];
 				arrayList[j] = temp;
-			j = j-1;
+			
+			}
+	
+//		for(int j=i;++comp&&j>0&&arrayList[j-1] > arrayList[j];j--)
+//		{
+//			swap = swap + 1;
+//			int temp = arrayList[j-1];
+//				arrayList[j-1] = arrayList[j];
+//				arrayList[j] = temp;
+//			
+//		}
 		}
+		arrayShow();
 	}
 
 	
 cout<<"Number of swaps= "<<swap<<endl;
+cout<<"Number of comparision= "<<comp<<endl;
+
 }
 void Insertion::arrayShow()
 {
-	cout<<"sorted array"<<endl;
 	for(int i =0; i<sizeofarray; i++)
 	{
-		cout<<arrayList[i]<<endl;
+		cout<<arrayList[i]<<"\t";
 	}
+	cout<<endl;
 }
 
 void Insertion::arrayInput()
@@ -76,6 +93,13 @@ void Insertion::arrayInput()
 }
 
 
+int Insertion::insertionComp(int a,int b)
+{
+	if(a>b)
+	{
+	return -1;
+	}
+}
 int main()
 {
 	int size;
@@ -93,8 +117,9 @@ int main()
 	{
 		obj.arrayInput();
 	}
-
+cout<<"Sorted array"<<endl;
 	obj.insertionSort();
-	obj.arrayShow();
+
+//	obj.arrayShow();
 }
 

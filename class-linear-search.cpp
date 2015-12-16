@@ -61,7 +61,7 @@ int main()
 	clock_t begin = clock();
 	obj.search(srchItem);
 	clock_t end	  = clock();
-	double total_time = double (end - begin);///CLOCKS_PER_SEC;
+	double total_time = double (end - begin)/CLOCKS_PER_SEC;
 	cout<<"time taken by linear searcg = "<<total_time<<endl;
 
 }	

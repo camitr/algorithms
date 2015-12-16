@@ -30,7 +30,7 @@ void Quick::quickArray()
 	srand((unsigned)time(NULL));
 		for(int i=0;i<sizeofarray;i++)
 		{
-			this->arrayList[i] = 1 + rand() %100;
+			this->arrayList[i] = 1 + rand() %10000;
 			cout<<arrayList[i]<<endl;
 		}
 /*
@@ -97,10 +97,10 @@ int main()
 	cin>>size;
 	Quick obj(size);
 	obj.quickArray();
-	clock_t begin = clock();
+	clock_t begin; 
+	begin = clock();
 	obj.quickSort(0,size-1);
-	clock_t end	  = clock();
-	double	time_taken	= double(end - begin)/CLOCKS_PER_SEC;
+	float	time_taken	= (double)(clock() - begin)/CLOCKS_PER_SEC;
 	obj.quickShow();
 	cout<<"time take by quick sort="<<time_taken<<endl;
 

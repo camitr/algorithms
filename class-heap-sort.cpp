@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cstdlib>
+#include<ctime>
 
 using namespace std;
 
@@ -88,7 +89,7 @@ void	Heap::heapSort()
 		int temp	= arrayList[i];
 		arrayList[i]	=	arrayList[1];
 		arrayList[1]	=	temp;
-		cout<<"arrayList["<<i<<"]= "<<arrayList[i]<<endl;
+//		cout<<"arrayList["<<i<<"]= "<<arrayList[i]<<endl;
 		heapHeapify(1,i-1);
 	}
 }
@@ -110,7 +111,12 @@ int main()
     {                                                                                                         
         obj.arrayInput();                                                                                     
     }                 
+	clock_t begin = clock();
 	obj.heapBuild();
 	obj.heapSort();
+	clock_t end   = clock();                                                                                  
+
 	obj.arrayShow();
+    double total_time = double (end - begin)/CLOCKS_PER_SEC;                                                  
+    cout<<"time taken by linear searcg = "<<total_time<<endl;   
 }

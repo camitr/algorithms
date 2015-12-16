@@ -72,7 +72,7 @@ int main()
 	clock_t begin = clock();
 	obj.binarySort(0,size,num);
 	clock_t end = clock();
-	double total_time = double(end - begin);/// CLOCKS_PER_SEC;
+	double total_time = double(end - begin)/ CLOCKS_PER_SEC;
 	cout<<"time take by Binary search = "<<total_time<<endl;
 
 	//timespec ts;
